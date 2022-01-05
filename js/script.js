@@ -1,4 +1,5 @@
 var score = 0
+var secondsLeft = 25;
 console.log(score);
 var startPage = document.getElementById('startPage');
 var startButton = document.getElementById("startButton");
@@ -50,8 +51,6 @@ var listOfQuestions = [
 ];
 //need to create a variable for current Question
 var currentQuestion = listOfQuestions[questionIndex];
-console.log(nextButton);
-
 
 // startPage dissapears after user clicks startButton
 //advancePage1 runs after the startPage
@@ -65,6 +64,9 @@ function advancePage() {
     question.style.display = "block";
     showQuestion();
 }
+
+setTimer();
+console.log(secondsLeft);
 //question1 grabs the appropriate heading and choices from array of listOfQuestions in index 0
 function showQuestion() {
     currentQuestion.heading
@@ -83,7 +85,17 @@ function showQuestion() {
     var nextButton = document.getElementById("nextButton");
     nextButton.textContent = "Next question";
     currentQuestion = listOfQuestions[questionIndex += 1];
-}
+    console.log(secondsLeft);
+    };
+
+    function setTimer() {
+        var timerInterval = setInterval(function () {
+            secondsLeft --;
+            if(secondsLeft === 0) {
+                clearInterval(timerInterval);
+            }        
+        }, 1000);
+    }
 // function getScore() {
 //     if (button2.getEventListener()))
 // }
@@ -96,6 +108,7 @@ nextButton.addEventListener("click", showQuestion);
 
         // ---------------------------------------------------------
 // I will need to create a data storage for the correct answer
+
 function keepScore() {
 
 }
