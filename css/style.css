@@ -1,15 +1,47 @@
+:root{
+    --red: #CC3714;
+    --black: #000608;
+    --brown: #C77714;
+    --darkblue: #001380;
+    --white: white;
+    /* nuetrals */
+    --gray: rgb(179, 180, 182); 
+    --beauBlue: #BCD1E0;
+    --Iris: #5A86A6;
+    --lawnGray: #7C8A94;
+    /* MONOCHROMATIC PALETTE */
+    --blueLapis: #266E80;
+    --persianBlue: #00A3CC;
+    --feldgrauBlue: #4DDBFF;
+    --PakistanGreen: #006680;
+
+}
 .card {
     text-align: center;
+    background-color: var(--beauBlue);
     padding: 20px 75px 40px 75px;
-    border: 9px double blue;
+    border: 9px double var(--PakistanGreen);
     margin: 75px 150px 20px 150px;
 }
-h1, h2 {
+h1{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 300%;
+    font-size: 400%;
+    color: var(--black);
+}
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 200%;
+    color: var(--black);
+}
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+    color:var(--red);
+    font-size: 250%;
 }
 p {
-    font-size: larger;
+    font-size: 175%;
+    font-weight: bold;
+    line-height: 1.5;
 }
 #question {
     display: flex;
@@ -19,10 +51,12 @@ button {
     font-size: x-large;
     display: inline;
     margin: 0px 15px;
+    background-color: var(--darkblue);
+    color: var(--white);
 }
 button:hover {
-    color: yellow;
-    background-color: purple;
+    color: var(--feldgrauBlue);
+    background-color: var(--blueLapis);
 }
 #nextButtonDiv {
     padding: 40px 0px 0px 0px;

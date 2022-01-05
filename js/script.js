@@ -1,5 +1,6 @@
 var score = 0
 var secondsLeft = 25;
+var timeLeft = document.getElementById("timeLeft")
 console.log(score);
 var startPage = document.getElementById('startPage');
 var startButton = document.getElementById("startButton");
@@ -64,8 +65,9 @@ function advancePage() {
     question.style.display = "block";
     showQuestion();
 }
-
+//start the timer
 setTimer();
+
 console.log(secondsLeft);
 //question1 grabs the appropriate heading and choices from array of listOfQuestions in index 0
 function showQuestion() {
@@ -91,6 +93,7 @@ function showQuestion() {
     function setTimer() {
         var timerInterval = setInterval(function () {
             secondsLeft --;
+            timeLeft.textContent = secondsLeft + " seconds left!"
             if(secondsLeft === 0) {
                 clearInterval(timerInterval);
             }        
