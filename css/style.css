@@ -11,11 +11,20 @@ h1, h2 {
 p {
     font-size: larger;
 }
+#question {
+    display: flex;
+}
 button {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: x-large;
+    display: inline;
+    margin: 0px 15px;
 }
 button:hover {
     color: yellow;
     background-color: purple;
+}
+#nextButtonDiv {
+    padding: 40px 0px 0px 0px;
+    margin: 40px 0px 0px 0px;
 }

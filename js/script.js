@@ -1,5 +1,6 @@
-var score
-var startPage = document.getElementById("startPage");
+var score = 0
+console.log(score);
+var startPage = document.getElementById('startPage');
 var startButton = document.getElementById("startButton");
 var question = document.getElementById("question");
 // use the same class for every question from the HTML
@@ -7,43 +8,58 @@ var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
-var buttonClicked = document.querySelector(".btn");
+var nextButton = document.getElementById("nextButton");
 //need to create an index of questions
 var questionIndex = 0;
-//need to create a variable for current Question
-var currentQuestion = listOfQuestions[questionIndex];
-console.log(buttonClicked);
-
 var listOfQuestions = [
     {
-        heading:"Which of the following is a data type", 
-        choice1: "bananas",
-        choice2: "array",
-        choice3: "stingrays",
-        choice4: "rays"
+        heading:"Which of the will default to a decimal?", 
+        choice1: "split",
+        choice2: "Math.Floor",
+        choice3: "math.random",
+        choice4: "slice"
     },
     {
         heading: "Which of the following is a method?",
-        choice1: "bananas",
-        choice2: "array",
-        choice3: "stingrays",
-        choice4: "rays"
+        choice1: "split",
+        choice2: "for",
+        choice3: "if else",
+        choice4: "what else"
     },
     {
-        heading: "Which of the following is correct syntax",
-        choice1: "bananas",
-        choice2: "array",
-        choice3: "stingrays",
-        choice4: "rays"
+        heading: "Common Data Types in JavaScript DO NOT include...",
+        choice1: "alerts",
+        choice2: "booleans",
+        choice3: "numbers",
+        choice4: "strings"
+    },
+    {
+        heading: "if else statements contained within",
+        choice1: "parenthesis",
+        choice2: "curly brackets",
+        choice3: "square brackets",
+        choice4: "quotes"
+    },
+    {
+        heading: "for loops must have what notation within the parenthesis",
+        choice1: "semicolon",
+        choice2: "commas",
+        choice3: "quotes",
+        choice4: "slashes"
     }
 ];
+//need to create a variable for current Question
+var currentQuestion = listOfQuestions[questionIndex];
+console.log(nextButton);
+
+
 // startPage dissapears after user clicks startButton
 //advancePage1 runs after the startPage
-startButton.addEventListener("click", advancePage1);
+startButton.addEventListener("click", advancePage);
 question.style.display = "none";
 
 //question 1 appears and startPage is hidden
-function advancePage1() {
+function advancePage() {
     console.log("click")
     startPage.style.display = "none"
     question.style.display = "block";
@@ -63,14 +79,26 @@ function showQuestion() {
     var button3 = document.getElementById("choice3");
     button3.textContent = currentQuestion.choice3;
     var button4 = document.getElementById("choice4");
-    button4.textContent = currentQuestion.choice4;  
-    buttonClicked.addEventListener("click", questionIndex[1]);
+    button4.textContent = currentQuestion.choice4;
+    var nextButton = document.getElementById("nextButton");
+    nextButton.textContent = "Next question";
+    currentQuestion = listOfQuestions[questionIndex += 1];
 }
-currentQuestion
+// function getScore() {
+//     if (button2.getEventListener()))
+// }
+//two ways to do
+//use keyword of "this"
+//google javascript t
+nextButton.addEventListener("click", showQuestion);
+
 //I will need to create another function to advance to next question
 
         // ---------------------------------------------------------
 // I will need to create a data storage for the correct answer
+function keepScore() {
+
+}
 //this will need an if statement
 
 
