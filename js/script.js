@@ -1,16 +1,18 @@
 var score = 0
+var finalScore = document.getElementById("finalScore");
 var secondsLeft = 25;
 var timeLeft = document.getElementById("timeLeft")
 console.log(score);
 var startPage = document.getElementById('startPage');
 var startButton = document.getElementById("startButton");
 var question = document.getElementById("question");
+var headingQuestion = document.getElementById("heading-question");
 var scorePage = document.getElementById("scorePage");
 // use the same class for every question from the HTML
-var choice1 = document.getElementById("choice1");
-var choice2 = document.getElementById("choice2");
-var choice3 = document.getElementById("choice3");
-var choice4 = document.getElementById("choice4");
+var button1 = document.getElementById("choice1");
+var button2 = document.getElementById("choice2");
+var button3 = document.getElementById("choice3");
+var button4 = document.getElementById("choice4");
 var nextButton = document.getElementById("nextButton");
 //need to create an index of questions
 var questionIndex = 0;
@@ -67,25 +69,21 @@ function advancePage() {
     startPage.style.display = "none"
     question.style.display = "block";
     showQuestion();
+    setTimer();
 }
 //start the timer
-setTimer();
+
 
 console.log(secondsLeft);
 //question1 grabs the appropriate heading and choices from array of listOfQuestions in index 0
 function showQuestion() {
     currentQuestion.heading
     console.log(currentQuestion.heading);
-    var headingQuestion = document.getElementById("heading-question");
     headingQuestion.textContent = currentQuestion.heading;
     console.log(currentQuestion.choice1, currentQuestion.choice2, currentQuestion.choice3, currentQuestion.choice4);
-    var button1 = document.getElementById("choice1");
     button1.textContent = currentQuestion.choice1; 
-    var button2 = document.getElementById("choice2");
     button2.textContent = currentQuestion.choice2; 
-    var button3 = document.getElementById("choice3");
     button3.textContent = currentQuestion.choice3;
-    var button4 = document.getElementById("choice4");
     button4.textContent = currentQuestion.choice4;
     var nextButton = document.getElementById("nextButton");
     nextButton.textContent = "Next question";
@@ -95,6 +93,7 @@ function showQuestion() {
     if (questionIndex === 5) {
         question.style.display = "none"
         scorePage.style.display = "block";
+        finalScore.textContent = "Total points: " + score;
         return;
     }
     };
