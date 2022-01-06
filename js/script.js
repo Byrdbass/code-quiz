@@ -5,6 +5,7 @@ console.log(score);
 var startPage = document.getElementById('startPage');
 var startButton = document.getElementById("startButton");
 var question = document.getElementById("question");
+var scorePage = document.getElementById("scorePage");
 // use the same class for every question from the HTML
 var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
@@ -57,6 +58,8 @@ var currentQuestion = listOfQuestions[questionIndex];
 //advancePage1 runs after the startPage
 startButton.addEventListener("click", advancePage);
 question.style.display = "none";
+scorePage.style.display = "none";
+
 
 //question 1 appears and startPage is hidden
 function advancePage() {
@@ -87,7 +90,13 @@ function showQuestion() {
     var nextButton = document.getElementById("nextButton");
     nextButton.textContent = "Next question";
     currentQuestion = listOfQuestions[questionIndex += 1];
-    console.log(secondsLeft);
+    console.log(secondsLeft + " seconds left");
+    console.log("you are on question #" + questionIndex)
+    if (questionIndex === 5) {
+        question.style.display = "none"
+        scorePage.style.display = "block";
+        return;
+    }
     };
     function setTimer() {
         var timerInterval = setInterval(function () {
