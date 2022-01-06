@@ -71,8 +71,8 @@ setTimer();
 console.log(secondsLeft);
 //question1 grabs the appropriate heading and choices from array of listOfQuestions in index 0
 function showQuestion() {
-    listOfQuestions[0].heading
-    console.log(listOfQuestions[0].heading)
+    currentQuestion.heading
+    console.log(currentQuestion.heading);
     var headingQuestion = document.getElementById("heading-question");
     headingQuestion.textContent = currentQuestion.heading;
     console.log(currentQuestion.choice1, currentQuestion.choice2, currentQuestion.choice3, currentQuestion.choice4);
@@ -89,7 +89,6 @@ function showQuestion() {
     currentQuestion = listOfQuestions[questionIndex += 1];
     console.log(secondsLeft);
     };
-
     function setTimer() {
         var timerInterval = setInterval(function () {
             secondsLeft --;
