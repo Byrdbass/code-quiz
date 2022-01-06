@@ -20,7 +20,7 @@ var listOfQuestions = [
     {
         heading:"Which of the will default to a decimal?", 
         choice1: "split",
-        choice2: "Math.Floor",
+        choice2: "Math.Floor", //this is the correct answer
         choice3: "math.random",
         choice4: "slice"
     },
@@ -62,20 +62,6 @@ startButton.addEventListener("click", advancePage);
 question.style.display = "none";
 scorePage.style.display = "none";
 
-
-//question 1 appears and startPage is hidden
-function advancePage() {
-    console.log("click")
-    startPage.style.display = "none"
-    question.style.display = "block";
-    showQuestion();
-    setTimer();
-}
-//start the timer
-
-
-console.log(secondsLeft);
-//question1 grabs the appropriate heading and choices from array of listOfQuestions in index 0
 function showQuestion() {
     currentQuestion.heading
     console.log(currentQuestion.heading);
@@ -90,6 +76,11 @@ function showQuestion() {
     currentQuestion = listOfQuestions[questionIndex += 1];
     console.log(secondsLeft + " seconds left");
     console.log("you are on question #" + questionIndex)
+    if (secondsLeft === 0) {
+        question.style.display = "none"
+        scorePage.style.display = "block";
+        finalScore.textContent = "You ran out of time! Total points: " + score;
+    } else 
     if (questionIndex === 5) {
         question.style.display = "none"
         scorePage.style.display = "block";
@@ -106,6 +97,21 @@ function showQuestion() {
             }        
         }, 1000);
     }
+//question 1 appears and startPage is hidden
+function advancePage() {
+    console.log("click")
+    startPage.style.display = "none"
+    question.style.display = "block";
+    showQuestion();
+    setTimer();
+}
+//start the timer
+
+
+console.log(secondsLeft);
+//question1 grabs the appropriate heading and choices from array of listOfQuestions in index 0
+
+
 // function getScore() {
 //     if (button2.getEventListener()))
 // }
