@@ -1,5 +1,11 @@
 var score = 0
+var highScore = localStorage.getItem("High Score");
 var finalScore = document.getElementById("finalScore");
+var userInitials = document.getElementById("userInitials");
+var userScoreInitials = document.getElementById('UserScore&Initials')
+var submitButton = document.getElementById('submitButton')
+var correctMessage = document.getElementById("correctMessage");
+var wrongMessage = document.getElementById("wrongMessage");
 var secondsLeft = 25;
 var timeLeft = document.getElementById("timeLeft")
 console.log(score);
@@ -67,6 +73,24 @@ var currentQuestion = listOfQuestions[questionIndex];
 startButton.addEventListener("click", advancePage);
 question.style.display = "none";
 scorePage.style.display = "none";
+function setTimer() {
+    var timerInterval = setInterval(function () {
+        secondsLeft --;
+        timeLeft.textContent = secondsLeft + " seconds left!"
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            alert("You ran out of time!");
+            question.style.display = "none"
+            scorePage.style.display = "block";
+            finalScore.textContent = "Total points: " + score;
+            function addHighScore() {
+            userScoreInitials.appendChild(userInitials);
+            }
+            submitButton.addEventListener('click', addHighScore)
+            localStorage.setItem("High Score", score)
+        }        
+    }, 1000);
+}
 function checkAnswer() {
     console.log("this is the correct answer ", listOfQuestions[questionIndex].correctAnswer);
     console.log("this is what the user picked ", this);
@@ -74,14 +98,19 @@ function checkAnswer() {
     if (listOfQuestions[questionIndex].correctAnswer === this.textContent) {
         score += 5;
         console.log(score);
+        var correctTimeout = setTimeout(
+        correctMessage.textContent = "Correct!", 1000);
+        clearTimeout(correctTimeout);
     } else {
         secondsLeft -= 2;
+        correctMessage.textContent = "Wrong, 2 seconds deducted from timer"
     }
-    // currentQuestion = listOfQuestions[questionIndex += 1];
     if (questionIndex === listOfQuestions.length -1) {
         question.style.display = "none"
         scorePage.style.display = "block";
         finalScore.textContent = "Total points: " + score;
+        console.log(secondsLeft);
+        clearInterval(setTimer);
         return;
     } else {
         currentQuestion = listOfQuestions[questionIndex += 1];
@@ -103,24 +132,11 @@ function showQuestion() {
     button2.addEventListener("click", checkAnswer);
     button3.addEventListener("click", checkAnswer);
     button4.addEventListener("click", checkAnswer);
-    
     console.log(secondsLeft + " seconds left");
     console.log("you are on question #" + questionIndex)
 
     };
-function setTimer() {
-    var timerInterval = setInterval(function () {
-        secondsLeft --;
-        timeLeft.textContent = secondsLeft + " seconds left!"
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            alert("You ran out of time!");
-            question.style.display = "none"
-            scorePage.style.display = "block";
-            finalScore.textContent = "Total points: " + score;
-        }        
-    }, 1000);
-}
+
 //question 1 appears and startPage is hidden
 function advancePage() {
     console.log("click")
