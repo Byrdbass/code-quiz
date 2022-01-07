@@ -63,6 +63,9 @@ var listOfQuestions = [
         choice3: "quotes",
         choice4: "slashes",
         correctAnswer: "semicolon"
+    },
+    {
+        heading: "you finished the last question before time was up! Congrats!",
     }
 ];
 //need to create a variable for current Question
@@ -79,9 +82,8 @@ function setTimer() {
     var timerInterval = setInterval(function () {
         secondsLeft --;
         timeLeft.textContent = secondsLeft + " seconds left!"
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            alert("You ran out of time!");
+        if(secondsLeft === 0 || questionIndex === 5) {
+            clearInterval(timerInterval);;
             question.style.display = "none"
             scorePage.style.display = "block";
             finalScore.textContent = "Total points: " + score;

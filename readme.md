@@ -1,3 +1,6 @@
+# Code-Quiz
+This project was a great learning experience for scope and realizing where I should be placing functions and calling them.
+
 ## Help from tutor and TA
 I was told there were two ways to think about building the quiz.  The first way would involve multiple HTML files and link one to the next.  The recommended way was to have seperate classes that would `display = "none"` and `display = "block"` within the Javascript.
 ## What I need to display for code quiz
