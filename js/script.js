@@ -1,5 +1,6 @@
 var score = 0
 var highScore = localStorage.getItem("High Score");
+var initials = localStorage.getItem("Player: ")
 var finalScore = document.getElementById("finalScore");
 var userInitials = document.getElementById("userInitials");
 var userScoreInitials = document.getElementById('UserScore&Initials')
@@ -20,7 +21,6 @@ var button1 = document.getElementById("choice1");
 var button2 = document.getElementById("choice2");
 var button3 = document.getElementById("choice3");
 var button4 = document.getElementById("choice4");
-var nextButton = document.getElementById("nextButton");
 //need to create an index of questions
 var questionIndex = 0;
 var listOfQuestions = [
@@ -73,6 +73,8 @@ var currentQuestion = listOfQuestions[questionIndex];
 startButton.addEventListener("click", advancePage);
 question.style.display = "none";
 scorePage.style.display = "none";
+
+
 function setTimer() {
     var timerInterval = setInterval(function () {
         secondsLeft --;
@@ -84,10 +86,17 @@ function setTimer() {
             scorePage.style.display = "block";
             finalScore.textContent = "Total points: " + score;
             function addHighScore() {
-            userScoreInitials.appendChild(userInitials);
+                var initials = document.getElementById("userInitials").value;
+                console.log(initials)
+                var node = document.createElement("li");
+                var textnode = document.createTextNode(initials + " " + score + " points") ;
+                node.appendChild(textnode);
+                document.getElementById("UserScore&Initials").appendChild(node);
+                localStorage.setItem("High Score ", score);
+                localStorage.setItem("Player: ", initials);
             }
-            submitButton.addEventListener('click', addHighScore)
-            localStorage.setItem("High Score", score)
+            submitButton.addEventListener('click', addHighScore);
+            
         }        
     }, 1000);
 }
@@ -110,7 +119,6 @@ function checkAnswer() {
         scorePage.style.display = "block";
         finalScore.textContent = "Total points: " + score;
         console.log(secondsLeft);
-        clearInterval(setTimer);
         return;
     } else {
         currentQuestion = listOfQuestions[questionIndex += 1];
@@ -133,7 +141,7 @@ function showQuestion() {
     button3.addEventListener("click", checkAnswer);
     button4.addEventListener("click", checkAnswer);
     console.log(secondsLeft + " seconds left");
-    console.log("you are on question #" + questionIndex)
+    console.log("you are on question #" + (questionIndex +1))
 
     };
 

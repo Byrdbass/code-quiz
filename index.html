@@ -19,23 +19,25 @@
         </p>
         <button id="startButton">Start Game!</button>
     </div>
+    
     <div id="question" class="card">
-        <h3 id=timeLeft></h3>
+        <div id=correctMessage></div>
+        <div id=wrongMessage></div>
         <h2 id="heading-question"></h2>
             <button id=choice1></button>
             <button id=choice2></button>
             <button id=choice3></button>
             <button id=choice4></button>
-            <div id=correctMessage></div>
-            <div id=wrongMessage></div>
+            <h3 id=timeLeft></h3>
     </div>
     <div id=scorePage class=card>
         <h3> Your final score is</h3>
         <h4 id="finalScore"></h4>
         <label>Enter Initials</label>
-        <input id="userInitials" type="text">
-        <button id="submitButton">Submit</button>
-        <h5 id=UserScore&Initials></h5>
+        <input id="userInitials" placeholder="initials here" type="text" onfocus="this.value=''">
+        <button type="button" id="submitButton">Add High Score</button>
+        <ul id=UserScore&Initials></ul>
+
 
     </div>
 <script src="js/script.js"></script>
